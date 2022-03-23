@@ -37,7 +37,7 @@ class Search extends Component {
     {
       img: "https://super-ficcion.com/wp-content/uploads/2021/12/DCs-Nightwing-Filmdrehbuch-ist-eine-Ur-Rache-Geschichte2webp-780x470.webp",
       title: "NightWing",
-      keywords: ["dc", "heroe", "NightWing"],
+      keywords: ["dc", "heroe", "NightWing", "Robin"],
     },
     {
       img: "https://dam.smashmexico.com.mx/wp-content/uploads/2020/09/Silk-serie-marvel-sony-pictures-plataformas-digitales-cover-770x513.jpg",
@@ -47,50 +47,27 @@ class Search extends Component {
   ];
 
   buscar(e) {
-    console.clear();
     var temporalGallery = this.state.gallery;
     var resultGallery = [];
-    console.log("**Activamos buscar " + e.target.value);
     if (e.target.value === "") {
-      // console.log("INPUT vacio")
       this.setState({
         gallery: this.defaultState,
       });
-      console.log("Limpiamos");
     } else {
       temporalGallery.forEach(function (element) {
-        console.log("Estamos en: "+element.title)
         element.keywords.forEach(function (keyword) {
-          console.log("Comparamos "+keyword+" con: "+e.target.value)
-          if (keyword.includes(e.target.value)) {
-            console.log("SI");
-            console.log("******************************")
+          if (
+            keyword.toLowerCase().includes(e.target.value.toLowerCase()) ||
+            element.title.toLowerCase().includes(e.target.value.toLowerCase())
+          ) {
             resultGallery.push(element);
-            console.log(resultGallery);
           }
         });
       });
-      temporalGallery=[]
+      const uniqueData = [...new Set(resultGallery)];
       this.setState({
-        gallery: resultGallery,
+        gallery: uniqueData,
       });
-      // temporalGallery.forEach(function (element) {
-      //   console.log("Recorriendo Galeria: " + element.keywords);
-      //   element.keywords.forEach(function (keyword) {
-      //     console.log("Recorriendo Keywords: " + keyword);
-      //     if (e.target.value.includes(keyword)) {
-      //       console.log(e.target.value + " Encontrado en " + keyword);
-      //       resultGallery.push(element);
-      //     }
-      //   });
-      // });
-      // console.log("State");
-      // console.log(this.state.gallery);
-      // console.log("Temporal");
-      // console.log(resultGallery);
-      // this.setState({
-      //   gallery: resultGallery,
-      // });
     }
   }
 
@@ -106,16 +83,6 @@ class Search extends Component {
           />
         </div>
         <div id="cardGallery">
-          {/** Every Card */}
-          {/* <div className="card">
-            <img src={img_avatar} alt="Avatar" />
-            <div className="container">
-              <h4>John Doe</h4>
-              <p>Architect & Engineer</p>
-            </div>
-          </div> */}
-          {/** End Every Card */}
-          {/* {console.log(this.state.gallery)} */}
           {/** Gallery */}
           {this.state.gallery.map((image, i) => {
             return (
