@@ -17,6 +17,12 @@ h2 {
   margin-bottom: 20px;
 }
 
+#searchForm {
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
 .card {
   /* Add shadows to create the "card" effect */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -25,6 +31,7 @@ h2 {
   text-align: center;
   float: left;
   margin-left: 10px;
+  margin-bottom: 10px;
 }
 
 .card img {
