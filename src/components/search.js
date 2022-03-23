@@ -34,12 +34,11 @@ class Search extends Component {
             </div>
           </div> */}
           {/** End Every Card */}
-          {console.log(this.state.gallery)}
+          {/* {console.log(this.state.gallery)} */}
           {/** Gallery */}
           {this.state.gallery.map((image, i) => {
-            console.log(image);
             return (
-              <div className="card">
+              <div className="card" key={i}>
                 <img src={image.img} alt="Avatar" />
                 <div className="container">
                   <h4>{image.title}</h4>
